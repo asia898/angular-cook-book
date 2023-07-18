@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cook-book';
+  showRecipes: boolean = false;
+  showList: boolean = true;
+
+  onSelectedSection(sectionData: {recipesSection: boolean, listSection: boolean}) {
+    this.showRecipes = sectionData.recipesSection;
+    this.showList = sectionData.listSection;
+  }
 }
