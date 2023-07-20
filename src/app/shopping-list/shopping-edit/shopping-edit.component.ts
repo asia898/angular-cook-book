@@ -7,13 +7,14 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
   styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent {
-  @ViewChild('amountInput', {static: true}) newAmount: ElementRef;
-
+  @ViewChild('amountInput', {static: false}) amoutInputRef: ElementRef;
+  @ViewChild('nameInput', {static: false}) nameInputRef: ElementRef;
   @Output() newIngredientAdded = new EventEmitter<Ingredient>();
 
-  onAdd(nameInput:HTMLInputElement) {
-    this.newIngredientAdded.emit(new Ingredient(nameInput.value, this.newAmount.nativeElement.value));
-    console.log('Added pressed name: ' + nameInput.value + ' amount: ' + this.newAmount.nativeElement.value);
-
+  onAdd() {
+    const ingName = this.nameInputRef.nativeElement.value;
+    const ingAmount = this.amoutInputRef.nativeElement.value;
+    const newIngredient = new Ingredient(ingName, ingAmount);
+    this.newIngredientAdded.emit(newIngredient);
   }
 }
