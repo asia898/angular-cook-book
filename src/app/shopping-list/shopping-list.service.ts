@@ -16,4 +16,10 @@ export class ShoppingListService {
         this.ingredients.push(newIngredient);
         this.ingredientsChanged.emit(this.ingredients.slice());
     }
+
+    // Separate method to add various ingredients so that we do not emit too many events.
+    addIngredients(newIngredients: Ingredient[]) {
+        this.ingredients.push(...this.ingredients);
+        this.ingredientsChanged.emit(this.ingredients.slice());
+    }
 }
