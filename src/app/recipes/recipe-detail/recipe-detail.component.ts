@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 
@@ -8,9 +9,25 @@ import { RecipeService } from '../recipe.service';
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent {
-  @Input() recipe: Recipe;
+  recipe: Recipe;
+  id: number;
 
-  constructor(private recipeService: RecipeService) {}
+  constructor(private recipeService: RecipeService,
+              private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    // No reacciona a los cambios:
+    // const id = this.route.snapshot.params['id'];
+
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          // Plus added because it will be a string and we want to cast it to a number.
+          this.id = +params['id'];
+          this.recipe = this.recipeService.getRecipeById(this.id);
+        }
+       );
+  }
 
   onToShoppingList() {
     this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);

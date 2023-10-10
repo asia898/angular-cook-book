@@ -12,7 +12,7 @@ export class RecipeService {
         new Recipe(
             'Tasty Schnitzel',
             'This is simply a test',
-            'https://realfood.tesco.com/media/images/Paella1400x919--921069c0-e3c1-46c2-a7fb-da21bf7bcd44-0-1400x919.jpg',
+            'https://ichef.bbci.co.uk/news/800/cpsprodpb/12BFA/production/_95249767_gettyimages-114366145.jpg',
             [
                 new Ingredient('Meat', 1),
                 new Ingredient('French Fries', 20)
@@ -37,6 +37,10 @@ export class RecipeService {
         // using slice method prevents from accessing directly to the recipes property. 
         // We just want to get copy
         return this.recipes.slice();
+    }
+
+    getRecipeById(index: number): Recipe {
+        return this.recipes[index];
     }
 
     addIngredientsToShoppingList(ingredients: Ingredient[]) {
