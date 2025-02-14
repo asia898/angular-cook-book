@@ -24,6 +24,12 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     )
   }
 
+  onEditItem(index: number) {
+    this.shoppingListService.startedEditing.next(index);
+  }
+
+  
+
   ngOnDestroy(): void {
     this.ingredientChangeSubscription.unsubscribe();
   }
