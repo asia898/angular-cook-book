@@ -6,7 +6,7 @@ import { RecipeService } from './recipe.service';
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.css'],
   // All child component will share the same instance
-  providers: [RecipeService]
+  // providers: [RecipeService]
 })
 export class RecipesComponent implements OnInit{
   constructor() {}
