@@ -9,28 +9,30 @@ import { Subject } from 'rxjs';
 export class RecipeService {
     recipesChanged = new Subject<Recipe[]>();
 
-    private recipes: Recipe[] = [
-        new Recipe(
-            'Tasty Schnitzel',
-            'This is simply a test',
-            'https://ichef.bbci.co.uk/news/800/cpsprodpb/12BFA/production/_95249767_gettyimages-114366145.jpg',
-            [
-                new Ingredient('Meat', 1),
-                new Ingredient('French Fries', 20)
-            ]
-            ),
-        new Recipe(
-            'Paella',
-            'This is simply a test',
-            'https://realfood.tesco.com/media/images/Paella1400x919--921069c0-e3c1-46c2-a7fb-da21bf7bcd44-0-1400x919.jpg',
-            [
-                new Ingredient('Rice', 1),
-                new Ingredient('Sea Food', 15),
-                new Ingredient('Checken wings', 4),
-                new Ingredient('Garlic', 3),
-            ]
-            )
-      ];
+    // private recipes: Recipe[] = [
+    //     new Recipe(
+    //         'Tasty Schnitzel',
+    //         'This is simply a test',
+    //         'https://ichef.bbci.co.uk/news/800/cpsprodpb/12BFA/production/_95249767_gettyimages-114366145.jpg',
+    //         [
+    //             new Ingredient('Meat', 1),
+    //             new Ingredient('French Fries', 20)
+    //         ]
+    //         ),
+    //     new Recipe(
+    //         'Paella',
+    //         'This is simply a test',
+    //         'https://realfood.tesco.com/media/images/Paella1400x919--921069c0-e3c1-46c2-a7fb-da21bf7bcd44-0-1400x919.jpg',
+    //         [
+    //             new Ingredient('Rice', 1),
+    //             new Ingredient('Sea Food', 15),
+    //             new Ingredient('Checken wings', 4),
+    //             new Ingredient('Garlic', 3),
+    //         ]
+    //         )
+    //   ];
+
+    private recipes: Recipe[] = [];
 
     constructor(private slService: ShoppingListService) {}
 
