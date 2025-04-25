@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RecipeService } from '../recipes/recipe.service';
 import { Recipe } from '../recipes/recipe.model';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 
@@ -21,7 +21,7 @@ export class DataStorageService {
     }
 
     fetchRecipes() {
-        this.http.get<Recipe[]>(
+        return this.http.get<Recipe[]>(
             'https://cook-book-backend-6660c-default-rtdb.europe-west1.firebasedatabase.app/recipes.json')
             .pipe(map(recipes => {
                 //with this pipe we assur that the recpe has always ingredients defined
@@ -29,9 +29,10 @@ export class DataStorageService {
                 return recipes.map(recipe => {
                     return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients: []};
                 });
-            }))
-            .subscribe(recipes => {
+            }),
+            tap(recipes => {
+                // tap allows to run a code without altering data
                 this.recipeService.setRecipes(recipes);
-            });
+            }));
     }
 }
