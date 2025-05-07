@@ -6,6 +6,7 @@ import { RecipesComponent } from "./recipes/recipes.component";
 import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
 import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 import { RecipesResolverService } from "./recipes/recipe-start/recipes-resolver.service";
+import { AuthComponent } from "./auth/auth.component";
 
 const appRoutes: Routes = [
     // empty path is a part of every path we need to add pathMatch strategy to full (only when the full path is empty.)
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
             { path: ':id/edit', component: RecipeEditComponent, resolve: [RecipesResolverService] }
         ]
     },
-    { path: 'shopping-list', component: ShoppingListComponent}
+    { path: 'shopping-list', component: ShoppingListComponent},
+    { path: 'auth', component:AuthComponent }
 ];
 
 @NgModule({
